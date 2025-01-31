@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23D56" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Dialogue" representedClassName="Dialogue" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="speaker" optional="YES" attributeType="String"/>
+        <relationship name="scenario" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Scenario" inverseName="dialogues" inverseEntity="Scenario"/>
+    </entity>
+    <entity name="Scenario" representedClassName="Scenario" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="scenarioDescription" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="dialogues" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Dialogue" inverseName="scenario" inverseEntity="Dialogue"/>
+    </entity>
+    <entity name="SpeechRecord" representedClassName="SpeechRecord" syncable="YES" codeGenerationType="class">
+        <attribute name="audioText" optional="YES" attributeType="String"/>
+        <attribute name="deepseekAnalysis" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="transcription" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="VocabularyCategory" representedClassName="VocabularyCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryDescription" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="VocabularyWord" inverseName="category" inverseEntity="VocabularyWord"/>
+    </entity>
+    <entity name="VocabularyWord" representedClassName="VocabularyWord" syncable="YES" codeGenerationType="class">
+        <attribute name="definition" optional="YES" attributeType="String"/>
+        <attribute name="example" optional="YES" attributeType="String"/>
+        <attribute name="pronunciation" optional="YES" attributeType="String"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VocabularyCategory" inverseName="words" inverseEntity="VocabularyCategory"/>
+    </entity>
+</model>
